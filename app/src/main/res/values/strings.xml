@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">IAmHere</string>
+    <string name="todo">TODO</string>
+    <string name="here_i_am">I am here</string>
+    <string name="location_no_available">Location no available</string>
+    <string name="address">Address</string>
+    <string name="save">Save</string>
+    <string name="send">Send</string>
+    <string name="search">Search</string>
+    <string name="i_am_here">Ich bin jetzt hier:</string>
+    <string name="stream_ring">STREAM_RING</string>
+    <string name="stream_music">STREAM_MUSIC</string>
+    <string name="stream_alarm">STREAM_ALARM</string>
+    <string name="stream_notification">STREAM_NOTIFICATION</string>
+    <string name="stream_system">STREAM_SYSTEM</string>
+    <string name="status">Status</string>
+    <string name="stunde_n">Stunde(n)</string>
+    <string name="minute_n">Minute(n)</string>
+</resources>
