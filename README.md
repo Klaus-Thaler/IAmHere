@@ -4,3 +4,6 @@ a second text message is sent and all audio volumes are restored to their previo
 
 <img width="288" height="624" alt="adbScreenShot20260314_105443.png" src="https://github.com/Klaus-Thaler/IAmHere/blob/da0096d6efa00fdfc7bbfb1c550229cb07c2184e/adbScreenShot20260314_105443.png" />
 
+<img width="288" height="624" alt="adbScreenShot20260315_120730.png" src="https://github.com/Klaus-Thaler/IAmHere/blob/9dc10c40be8097447678327f90711f2bb5107df2/adbScreenShot20260315_120730.png" />
+
+
