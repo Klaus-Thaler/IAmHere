@@ -60,7 +60,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import org.osmdroid.config.Configuration;
-import org.osmdroid.views.MapView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -69,7 +68,6 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "myLog MainActivity";
-    public static MapView mapView;
     //public static final double[] defLocation = new double[]{54.374301398359776,10.131298899650576};
     public static final double[] defLocation = new double[]{50,10};
     @SuppressLint("StaticFieldLeak")
@@ -237,10 +235,6 @@ public class MainActivity extends AppCompatActivity {
                         // deprecated audioManager.setStreamMute(i, true);
                         audioManager.setStreamVolume(i, 0, AudioManager.FLAG_PLAY_SOUND);
                         Log.d(TAG, "volume index " + i + " null: " + audioManager.getStreamVolume(i));
-
-                        // TODO: 14.03.26
-                        //AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-                        //manager.setStreamVolume(AudioManager.STREAM_ALARM, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
                     }
                     setActuallyAudioStream();
                     Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
@@ -312,9 +306,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        Configuration.getInstance().load(getApplicationContext(),
-                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        if (mapView != null) { mapView.onResume(); }
         // always on start
         mLocation.checkLocation();
         registerReceiver(mBroadcastReceiver, intentFilter);
@@ -322,9 +313,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-        Configuration.getInstance().save(getApplicationContext(),
-                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        if (mapView != null) { mapView.onPause(); }
     }
     @Override
     public void onDestroy() {
