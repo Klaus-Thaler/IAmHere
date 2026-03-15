@@ -13,6 +13,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class myNotification {
+    // https://developer.android.com/develop/ui/views/notifications/build-notification?hl=de
+    // https://developer.android.com/develop/ui/views/notifications/expanded?hl=de
     String TAG = "myLog myNotification";
     private final Context context;
     private final Activity activity;

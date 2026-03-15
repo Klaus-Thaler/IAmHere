@@ -43,7 +43,7 @@ public class mBroadcastReceiver extends BroadcastReceiver {
         Toast.makeText(context, "ende", Toast.LENGTH_SHORT).show();
         MainActivity.mainActivity.status.setText("ende");
 
-        String number = MainActivity.mPreference.getString("phoneNumber", "+49 176 51620777");
+        String number = MainActivity.mPreference.getString("phoneNumber", "+49 0123 123456789");
         String msg = "Ich habe alles angeschaltet und bin wieder erreichbar";
         // send sms
         try {
