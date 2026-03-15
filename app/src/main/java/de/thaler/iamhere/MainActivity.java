@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         };
         ActivityCompat.requestPermissions(this, locationPerms, 2);
 
-
         AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         manager.setStreamVolume(AudioManager.STREAM_ALARM, AudioManager.STREAM_ALARM, AudioManager.FLAG_VIBRATE); //.FLAG_REMOVE_SOUND_AND_VIBRATE);
         //manager.setStreamVolume(AudioManager.STREAM_ALARM, 0, AudioManager.FLAG_PLAY_SOUND);
@@ -132,27 +131,12 @@ public class MainActivity extends AppCompatActivity {
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
-        /* alt!
-        Intent startIntent = new Intent("WhatEverYouWant");
-        PendingIntent startPIntent = PendingIntent.getBroadcast(this, 0, startIntent, PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarm.set(AlarmManager.RTC_WAKEUP, 10 * 1000, startPIntent);
-        */
-
         // alle audio als Progress anzeigen
         progressBarStreamSystem = findViewById(R.id.progressBarStreamSystem);
         progressBarStreamRing = findViewById(R.id.progressBarStreamRing);
         progressBarStreamMusic = findViewById(R.id.progressBarStreamMusic);
         progressBarStreamAlarm = findViewById(R.id.progressBarStreamAlarm);
         progressBarStreamNotification = findViewById(R.id.progressBarStreamNotification);
-
-        /*
-        progressBarStreamSystem.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
-        progressBarStreamRing.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_RING));
-        progressBarStreamMusic.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-        progressBarStreamAlarm.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM));
-        progressBarStreamNotification.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION));
-        */
 
         audioStreamList = new int[]{
                 AudioManager.STREAM_SYSTEM,
@@ -228,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(mainActivity, "Start: " + simpleDateFormat.format(startTime)
                 //        + " Ende: " + simpleDateFormat.format(endTime), Toast.LENGTH_LONG).show();
 
-                String number = mPreference.getString("phoneNumber", "+49 176 51620777");
+                String number = mPreference.getString("phoneNumber", "+49 0123 123456789");
                 String msg = "Ich bin " + dropDownInfo.getSelectedItem().toString() + ". Ort: "
                         + address.getText().toString() + " Ende (ca.): "
                         + simpleDateFormat.format(endTime);
