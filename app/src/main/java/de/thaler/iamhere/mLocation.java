@@ -76,9 +76,6 @@ public class mLocation extends MainActivity {
                             locationCallback);
                 }
             }).start();
-        } else {
-            Toast.makeText(mainActivity, "Android Version < " + Build.VERSION_CODES.R,
-                    Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -29,6 +29,10 @@ USE_DEFAULT_STREAM_TYPE - Suggests using the default stream type.
 */
 package de.thaler.iamhere;
 
+import static android.telephony.SmsManager.RESULT_ERROR_GENERIC_FAILURE;
+import static android.telephony.SmsManager.RESULT_ERROR_NO_SERVICE;
+import static android.telephony.SmsManager.RESULT_ERROR_RADIO_OFF;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -65,6 +69,7 @@ import org.osmdroid.config.Configuration;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -162,22 +167,6 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterMinute = new ArrayAdapter<>(this, R.layout.spinner_list, itemsMinute);
         dropDownMinutes.setAdapter(adapterMinute);
 
-        /*
-        String[] SPINNER_DATA = getResources().getStringArray(R.array.SPINNER_DATA_HOUR);
-
-
-        Spinner dropDownHour = findViewById(R.id.spinnerHour2);
-        String[] itemsHour = getResources().getStringArray(R.array.SPINNER_0_9);
-
-        ArrayAdapter<String> adapterHour = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsHour);
-        dropDownHour.setAdapter(adapterHour);
-
-        Spinner dropDownMinutes = findViewById(R.id.spinnerMinute1);
-        String[] itemsMinutes = getResources().getStringArray(R.array.SPINNER_0_9);
-        ArrayAdapter<String> adapterMinutes = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsMinutes);
-        //dropDownMinutes.setAdapter(adapterMinutes);
-
-         */
 
         // store the current value in cache
         for (int i : audioStreamList) {
@@ -240,6 +229,12 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage(number, null, msg, null, null);
+                    // alles auf null
+                    for (int i : audioStreamList) {
+                        audioManager.setStreamVolume(i, 0, AudioManager.FLAG_PLAY_SOUND);
+                        Log.d(TAG, "volume index " + i + " null: " + audioManager.getStreamVolume(i));
+                    }
+                    Toast.makeText(getApplicationContext(), "send SMS", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(),"Error. SMS possible?",Toast.LENGTH_LONG).show();
                     Log.i(TAG, e.toString());
@@ -251,14 +246,7 @@ public class MainActivity extends AppCompatActivity {
                                 + simpleDateFormat.format(startTime)
                                 + " Ende: " + simpleDateFormat.format(endTime));
                     }
-                    // alles auf null
-                    for (int i : audioStreamList) {
-                        // deprecated audioManager.setStreamMute(i, true);
-                        audioManager.setStreamVolume(i, 0, AudioManager.FLAG_PLAY_SOUND);
-                        Log.d(TAG, "volume index " + i + " null: " + audioManager.getStreamVolume(i));
-                    }
                     setActuallyAudioStream();
-                    Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -339,5 +327,21 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(mBroadcastReceiver);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        String error = "";
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU) {
+            error += " No Notification.";
+        }
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
+            error += " No Location.";
+        }
+        if (!error.isEmpty()) {
+            Toast.makeText(mainActivity, error, Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
