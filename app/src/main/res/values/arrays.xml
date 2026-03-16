@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SPINNER_HOUR">
+        <item name="0">00</item>
+        <item name="1">01</item>
+        <item name="2">02</item>
+        <item name="3">03</item>
+        <item name="4">04</item>
+        <item name="5">05</item>
+        <item name="6">06</item>
+        <item name="7">07</item>
+        <item name="8">08</item>
+        <item name="9">09</item>
+        <item name="10">10</item>
+        <item name="11">11</item>
+        <item name="12">12</item>
+    </string-array>
+    <string-array name="SPINNER_MINUTE">
+        <item name="0">00</item>
+        <item name="1">15</item>
+        <item name="2">30</item>
+        <item name="3">45</item>
+    </string-array>
+</resources>

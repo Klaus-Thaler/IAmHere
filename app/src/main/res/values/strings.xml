@@ -8,11 +8,11 @@
     <string name="send">Send</string>
     <string name="search">Search</string>
     <string name="i_am_here">Ich bin jetzt hier:</string>
-    <string name="stream_ring">STREAM_RING</string>
-    <string name="stream_music">STREAM_MUSIC</string>
-    <string name="stream_alarm">STREAM_ALARM</string>
-    <string name="stream_notification">STREAM_NOTIFICATION</string>
-    <string name="stream_system">STREAM_SYSTEM</string>
+    <string name="stream_ring">RING</string>
+    <string name="stream_music">MUSIC</string>
+    <string name="stream_alarm">ALARM</string>
+    <string name="stream_notification">NOTIFICATION</string>
+    <string name="stream_system">SYSTEM</string>
     <string name="status">Status</string>
     <string name="stunde_n">Stunde(n)</string>
     <string name="minute_n">Minute(n)</string>

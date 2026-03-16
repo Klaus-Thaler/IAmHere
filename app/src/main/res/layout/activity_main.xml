@@ -12,10 +12,10 @@
         android:layout_width="342dp"
         android:layout_height="36dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/custom_border"
         android:gravity="center"
         android:text="@string/location_no_available"
         android:textColor="#FF0000"
-        android:background="@drawable/custom_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,14 +35,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLocationAvailable"
         tools:ignore="RtlSymmetry,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+    <Button
+        android:id="@+id/buttonSaveNumber"
+        android:layout_width="123dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_border"
+        android:text="@string/save"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/editTextPhone"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLocationAvailable"
+        tools:ignore="TouchTargetSizeCheck" />
+
     <Spinner
         android:id="@+id/spinnerInfo"
         android:layout_width="333dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_border"
         android:paddingStart="8sp"
         android:paddingEnd="8sp"
-        android:background="@drawable/custom_border"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
@@ -54,70 +67,73 @@
         android:id="@+id/textViewAddress"
         android:layout_width="296dp"
         android:layout_height="75dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/address"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerHour" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerInfo" />
 
-    <Button
-        android:id="@+id/buttonSaveNumber"
-        android:layout_width="123dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/save"
-        android:textSize="14sp"
-        android:background="@drawable/custom_border"
-        app:layout_constraintStart_toEndOf="@+id/editTextPhone"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLocationAvailable"
-        tools:ignore="TouchTargetSizeCheck" />
+    <include
+        android:id="@+id/include_time_layout"
+        layout="@layout/time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
 
     <Button
         android:id="@+id/buttonSearchLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32sp"
+        android:layout_marginTop="12dp"
         android:text="@string/search"
         android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonClear"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
-
-    <Button
-        android:id="@+id/buttonSendSMS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/send"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/buttonClear"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/include_time_layout" />
 
     <Button
         android:id="@+id/buttonClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="36dp"
         android:text="clear"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSendSMS"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonSearchLocation"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toTopOf="@+id/buttonSearchLocation" />
+
+    <Button
+        android:id="@+id/buttonSendSMS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32sp"
+        android:text="@string/send"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonClear"
+        app:layout_constraintTop_toTopOf="@+id/buttonClear" />
 
     <TextView
         android:id="@+id/textViewStatus"
-        android:layout_width="348dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_border"
         android:text="@string/status"
         android:textSize="18sp"
-        android:background="@drawable/custom_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonClear" />
 
@@ -132,58 +148,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinnerHour"
-        android:layout_width="83dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerInfo"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
-
-    <Spinner
-        android:id="@+id/spinnerMinutes"
-        android:layout_width="82dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerInfo"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/stunde_n"
-        app:layout_constraintStart_toEndOf="@+id/spinnerHour"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerInfo" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/minute_n"
-        app:layout_constraintStart_toEndOf="@+id/spinnerMinutes"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerInfo" />
-
-
     <include
         layout="@layout/table_audio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="42sp"
+        android:layout_marginTop="12sp"
+        android:layout_marginEnd="42sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

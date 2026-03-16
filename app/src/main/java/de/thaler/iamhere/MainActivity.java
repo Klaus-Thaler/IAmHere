@@ -37,6 +37,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -148,15 +150,34 @@ public class MainActivity extends AppCompatActivity {
         setActuallyAudioStream();  // sets the current status in the progress bar
 
         // set time
-        Spinner dropDownHour = findViewById(R.id.spinnerHour);
-        String[] itemsHour = new String[]{"0","1","2","3","4","5","6","7","8","9"};
+        Spinner dropDownHour = findViewById(R.id.spinner_hour);
+        String[] itemsHour = getResources().getStringArray(R.array.SPINNER_HOUR);
+        ArrayAdapter<String> adapterHour = new ArrayAdapter<>(this, R.layout.spinner_list, itemsHour);
+        dropDownHour.setAdapter(adapterHour);
+
+        TextView doublePoint = findViewById(R.id.doublePoint);
+
+        Spinner dropDownMinutes = findViewById(R.id.spinner_minutes);
+        String[] itemsMinute = getResources().getStringArray(R.array.SPINNER_MINUTE);
+        ArrayAdapter<String> adapterMinute = new ArrayAdapter<>(this, R.layout.spinner_list, itemsMinute);
+        dropDownMinutes.setAdapter(adapterMinute);
+
+        /*
+        String[] SPINNER_DATA = getResources().getStringArray(R.array.SPINNER_DATA_HOUR);
+
+
+        Spinner dropDownHour = findViewById(R.id.spinnerHour2);
+        String[] itemsHour = getResources().getStringArray(R.array.SPINNER_0_9);
+
         ArrayAdapter<String> adapterHour = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsHour);
         dropDownHour.setAdapter(adapterHour);
 
-        Spinner dropDownMinutes = findViewById(R.id.spinnerMinutes);
-        String[] itemsMinutes = new String[]{"0","10","20","30","40","50"};
+        Spinner dropDownMinutes = findViewById(R.id.spinnerMinute1);
+        String[] itemsMinutes = getResources().getStringArray(R.array.SPINNER_0_9);
         ArrayAdapter<String> adapterMinutes = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsMinutes);
-        dropDownMinutes.setAdapter(adapterMinutes);
+        //dropDownMinutes.setAdapter(adapterMinutes);
+
+         */
 
         // store the current value in cache
         for (int i : audioStreamList) {
@@ -167,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         address = findViewById(R.id.textViewAddress);
         progressBarKringel = findViewById(R.id.progressBar);
         EditText textPhoneNumber = findViewById(R.id.editTextPhone);
-        textPhoneNumber.setText(mPreference.getString("phoneNumber", "+49 176 51620777"));
+        textPhoneNumber.setText(mPreference.getString("phoneNumber", "+49 0123 123456789"));
 
         available = findViewById(R.id.textViewLocationAvailable);
         if (mLocation.isLocationEnabled(mainActivity)) {
@@ -197,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // spinner items
                 hour = (int) dropDownHour.getSelectedItemPosition();
-                minutes = (int) dropDownMinutes.getSelectedItemPosition() * 10;
+                minutes = (int) dropDownMinutes.getSelectedItemPosition() * 15;
                 Log.d(TAG, "h+m " + hour + minutes);
                 long delay = ((long) hour * 60 * 60000) + (minutes * 60000L);
                 mTimer(delay);

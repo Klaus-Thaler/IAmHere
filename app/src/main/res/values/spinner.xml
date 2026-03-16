@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SPINNER_DATA_HOUR">
+        <item name="0">"0"</item>
+        <item name="1">"1 Stunde"</item>
+        <item name="2">"2 Stunden"</item>
+        <item name="3">"3 Stunden"</item>
+        <item name="4">"4 Stunden"</item>
+        <item name="5">"5 Stunden"</item>
+        <item name="6">"6 Stunden"</item>
+        <item name="7">"7 Stunden"</item>
+        <item name="8">"8 Stunden"</item>
+        <item name="9">"9 Stunden"</item>
+        <item name="10">"10 Stunden"</item>
+        <item name="11">"11 Stunden"</item>
+        <item name="12">"12 Stunden"</item>
+    </string-array>
+    <string-array name="SPINNER_DATA_MINUTE">
+        <item name="0">"0"</item>
+        <item name="1">"10 Minuten"</item>
+        <item name="1">"20 Minuten"</item>
+        <item name="1">"30 Minuten"</item>
+        <item name="1">"40 Minuten"</item>
+        <item name="1">"50 Minuten"</item>
+    </string-array>
+    <string-array name="SPINNER_0_9">
+        <item name="0">0</item>
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="5">5</item>
+        <item name="6">6</item>
+        <item name="7">7</item>
+        <item name="8">8</item>
+        <item name="9">9</item>
+    </string-array>
+</resources>
